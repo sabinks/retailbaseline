@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap");
+body {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: left;
+  letter-spacing: 0.5px;
+  font-family: "Lato", sans-serif;
+}
+.divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 1px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+}
+.form-control:-moz-placeholder {
+  color: #bbb;
+}
+.form-control::-moz-placeholder {
+  color: #bbb;
+}
+.form-control:-ms-input-placeholder {
+  color: #bbb;
+}
+.form-control::-ms-input-placeholder {
+  color: #bbb;
+}
+.form-control,
+.custom-file-label {
+  border-color: #999;
+}
+.custom-file-label,
+.custom-file-input {
+  height: 38px;
+}
+.custom-file-label:after {
+  height: auto;
+  line-height: 1.7;
+}
+.custom-file-label {
+  line-height: 1.7;
+}
+.custom-file-label span {
+  width: calc(100% - 70px);
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.table-responsive > .dt-bootstrap4 {
+  padding: 4px;
+}
+.dataTables_paginate {
+  margin-top: 10px;
+}
+.badge {
+  padding: 6px 12px;
+  min-width: 19px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+.badge-group .badge {
+  margin: 3px;
+}
+.react-form-builder .react-form-builder-preview {
+  width: calc(100% - 330px);
+}
+.react-form-builder .react-form-builder-toolbar {
+  width: 300px;
+  margin: 0;
+}
+.react-form-builder .react-form-builder-preview.is-editing .edit-form {
+  position: absolute;
+  left: 0;
+}
+.validation-error {
+  position: fixed;
+  width: 75%;
+  top: 70px;
+  left: 290px;
+  margin: 0;
+  z-index: 99999999;
+}
+.thumbs-wrapper, .axis-vertical{
+  display: none;
+}

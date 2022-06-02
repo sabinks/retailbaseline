@@ -1,0 +1,112 @@
+<?php
+
+namespace App\Exports;
+
+use Carbon\Carbon;
+use App\EntitiesForm;
+use App\Models\Report;
+use App\Models\ReportData;
+use Illuminate\Support\Collection;
+use App\Http\Resources\ReportDataList;
+use Maatwebsite\Excel\Events\AfterSheet;
+use App\Http\Resources\ReportData\ReportDataResource;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+
+class EntityDataExport implements FromCollection, ShouldAutoSize, WithEvents
+{
+    public $all_data, $id;
+
+    public function __construct($id, $all_data){
+        $this->all_data = $all_data;
+        $this->id = $id;
+    }
+    
+    public function collection(){
+        $all_reports_data = $this->all_data;
+        $report_excel[0] = ['Entity Name', 'Latitude', 'Longitude', 'Region Name', 'Assigned Date', 'Filled Date','Filled By', 'Status'];
+        $formInputLabel = [];
+        $formInputs = [];
+        $report_form = EntitiesForm::whereId($this->id)->first();
+        if(!$report_form){
+            return response()->json([
+            'message' => 'No Entity Found.',
+            ], 404);
+        }
+
+        $formInputsData = json_decode($report_form->inputs, true);
+        foreach ($formInputsData as $key => $formInput) {
+            if (!($formInput['element'] == 'Camera' || 
+                    $formInput['element'] == 'Header' || 
+                    $formInput['field_name'] == 'text_input_F8FE64B1-5A21-4770-B218-2C0158FFAD28')){
+                array_push($formInputLabel, trim($formInput['label']) );
+                array_push($formInputs, [ 'element' => trim($formInput['element']), 'field_name' => trim($formInput['field_name'])] );
+            }
+        }
+        $report_excel[0] = array_merge($report_excel[0], $formInputLabel);      
+        foreach ($all_reports_data as $report) {
+            $formDatas = json_decode($report->input_datas,true);
+            $answer = [];
+            foreach ($formInputs as $formInput) {
+                foreach($formDatas as $key => $formData){
+                    if($formInput['field_name'] == $formData['name']){
+                        if($formInput['element'] == 'Tags' || $formInput['element'] == 'Checkboxes' || 
+                            $formInput['element'] == 'RadioButtons' ){
+                            $datas = $formData['value'];
+                            $value = [];
+                            foreach($datas as $index => $data){
+                                array_push($value, $data['text']);
+                            }
+                            array_push($answer, implode(', ',$value));
+                        }
+                        if($formInput['element'] == 'NumberInput' || $formInput['element'] == 'TextArea' || 
+                            $formInput['element'] == 'TextInput' || $formInput['element'] == 'Dropdown'){
+                            array_push($answer,  $formData['value']);
+                        }
+                        if($formInput['element'] == 'DatePicker'){
+                            array_push($answer,  Carbon::parse($formData['value'])->toDateString());
+                        }
+                        unset($formDatas[$key]);
+                    }
+                }
+            }
+            $data = [
+                $report->name,
+                $report->latitude,
+                $report->longitude,
+                $report->region->name,
+                $report->assigned_date ? Carbon::createFromFormat('Y-m-d H:i:s', $report->assigned_date, 'UTC')
+                    ->format('Y-m-d') : '-',
+                $report->filled_date ? Carbon::createFromFormat('Y-m-d H:i:s', $report->filled_date, 'UTC')
+                    ->format('Y-m-d'): '-' ,
+                $report->formFiller->name,
+                $this->statusConversion($report->status)
+            ];
+            $report_excel[] = array_merge($data, $answer);
+        }
+        return new Collection([
+            $report_excel
+        ]);
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class    => function(AfterSheet $event) {
+                $cellRange = 'A1:W1'; 
+                $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(13);
+            },
+        ];
+    }
+    public function statusConversion($status){
+        switch ($status) {
+            case 1:
+                return 'Filled';
+            case 2:
+                return 'Approved';
+            case 3:
+                return 'Rejected';
+        }
+    }
+}

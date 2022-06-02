@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap");
+body {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: left;
+    letter-spacing: 0.5px;
+    font-family: "Lato", sans-serif;
+}
+.divider {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 1px;
+    overflow: hidden;
+    background: #e9ecef;
+}
+.form-control::-webkit-input-placeholder {
+    color: #bbb;
+} /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder {
+    color: #bbb;
+} /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder {
+    color: #bbb;
+} /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder {
+    color: #bbb;
+} /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder {
+    color: #bbb;
+} /* Microsoft Edge */
+.form-control,
+.custom-file-label {
+    border-color: #999;
+}
+.custom-file-label,
+.custom-file-input {
+    height: 38px;
+}
+.custom-file-label:after {
+    height: auto;
+    line-height: 1.7;
+}
+.custom-file-label {
+    line-height: 1.7;
+    span {
+        width: calc(100% - 70px);
+    }
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.table-responsive > .dt-bootstrap4 {
+    padding: 4px;
+}
+.dataTables_paginate {
+    margin-top: 10px;
+}
+.badge {
+    padding: 6px 12px;
+    min-width: 19px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+.badge-group {
+    .badge {
+        margin: 3px;
+    }
+}
+.react-form-builder .react-form-builder-preview {
+    width: calc(100% - 330px);
+}
+.react-form-builder .react-form-builder-toolbar {
+    width: 300px;
+    margin: 0;
+}
+.react-form-builder .react-form-builder-preview.is-editing .edit-form {
+    position: absolute;
+    left: 0;
+}
+
+.validation-error {
+    position: fixed;
+    width: 75%;
+    top: 70px;
+    left: 290px;
+    margin: 0;
+    z-index: 99999999;
+}
+#link_page {
+    color: white;
+    text-decoration: none;
+}
+#page_link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: left;
+    padding-left: 3rem;
+}
+#myDIV {
+    display: none;
+}
+#entity-image {
+    width: 100%;
+    height: 350px;
+}
+
+.history-info1 {
+    width: 55% !important;
+}
+.history-info2 {
+    width: 45% !important;
+}
+#wrap_count {
+    display: flex;
+}
+#count {
+    width: 45%;
+}
+.thumbs-wrapper,
+.axis-vertical {
+    display: none;
+}
+.carousel-slider {
+    width: 70% !important;
+}
+.pagination ul li {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 30px;
+}
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+.pagination li.active-page {
+    background-color: #4caf50;
+    color: white;
+    // border: 1px solid #4caf50;
+}
+.pagination li:hover:not(.active-page) {
+    background-color: #ddd;
+}
+.pagination li:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination li:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+// #DataTables_Table_0_wrapper .row:first-child div:first-child{
+//     background-color: red;
+// }
+// #DataTables_Table_0_wrapper .row:first-child div:last-child{
+//     background-color: green;
+// }
+// .dataTables_length{
+//     float: right;
+// }
+// .dataTables_filter{
+//     // float: left;
+// }
+.app-sidebar__heading{
+    color: #000;
+}
+.vertical-nav-menu li a, .vertical-nav-menu ul li a{
+    color: #000;
+}
+.metismenu-icon{
+    color: #000;
+}
+.widget-heading{
+    color: #000;
+}

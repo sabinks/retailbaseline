@@ -1,0 +1,19 @@
+[     {
+        "id": "D6BB3522-BA0D-4B3A-B972-6AE3FAC20030",
+        "element": "DatePicker",
+        "text": "Date",
+        "required": true,
+        "defaultToday": true,
+        "showTimeSelect": false,
+        "showTimeSelectOnly": false,
+        "dateFormat":"dd/MM/yyyy",
+        "canHavePageBreakBefore": false,
+        "canHaveAlternateForm": false,
+        "canHaveDisplayHorizontal": false,
+        "canHaveOptionCorrect": false,
+        "canHaveOptionValue": true,
+        "field_name": "date_picker_9683883C-AA5C-4C53-91A5-F1736883BC8F4",
+        "label": "Select Date",
+        "dirty": false
+    }
+  ]

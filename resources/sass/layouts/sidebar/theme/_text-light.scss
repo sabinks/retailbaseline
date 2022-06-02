@@ -1,0 +1,85 @@
+// Sidebar Light
+
+.app-sidebar {
+    &.text-light {
+      border-right: 0 !important;
+  
+      .app-sidebar__heading {
+        color: rgba(255, 255, 255, .8);
+  
+        &::before {
+          background: rgba(255, 255, 255, 0.5) !important;
+        }
+      }
+  
+      .vertical-nav-menu {
+        li {
+          a {
+            color: rgba(255, 255, 255, .9);
+            i.metismenu-icon {
+              opacity: .8;
+            }
+  
+            i.metismenu-state-icon {
+              opacity: .6;
+            }
+  
+            &:hover {
+              background: rgba(255, 255, 255, 0.3);
+              color: rgba(255, 255, 255, 1);
+  
+              i.metismenu-icon {
+                opacity: 1;
+              }
+  
+              i.metismenu-state-icon {
+                opacity: 1;
+              }
+            }
+          }
+  
+          a.mm-active {
+            color: rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.3);
+          }
+        }
+  
+        ul {
+          &:before {
+            background: rgba(255, 255, 255, 0.3);
+          }
+  
+          & > li > a {
+            color: rgba(255, 255, 255, 0.9);
+  
+            &:hover {
+              color: rgba(255, 255, 255, 1);
+            }
+  
+            &.mm-active {
+              color: rgba(255, 255, 255, 1);
+              background: rgba(255, 255, 255, 0.3);
+            }
+          }
+        }
+      }
+  
+      .ps__thumb-y {
+        background: rgba(255, 255, 255, .3);
+      }
+  
+      .ps__rail-y:hover {
+        .ps__thumb-y {
+          background: rgba(255, 255, 255, .2);
+        }
+      }
+  
+      .app-header__logo {
+        .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+          background-color: rgba(255, 255, 255, .8);
+        }
+      }
+    }
+  }

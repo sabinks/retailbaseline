@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+@import "theme/theme";
+@import "layouts/layouts";
+@import "widgets/widget-index";
+@import "main";
+@import '~datatables.net-bs4/css/dataTables.bootstrap4';
+@import '~datatables.net-responsive-bs4/css/responsive.bootstrap4';
+@import 'datatable_extension/select.dataTables.min';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';

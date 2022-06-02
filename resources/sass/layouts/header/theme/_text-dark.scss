@@ -1,0 +1,44 @@
+// Header Dark
+
+.app-header {
+    &.text-dark {
+      .app-header-right {
+        & > .header-btn-lg {
+  
+          & .widget-content-left .btn-group > .btn,
+          .widget-heading,
+          .widget-subheading {
+            color: rgba(0, 0, 0, .8);
+          }
+  
+          .header-user-info {
+            & > .btn-shadow {
+              box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, .1), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+            }
+          }
+        }
+      }
+      .header-btn-lg {
+        &::before {
+          background: rgba(0, 0, 0, .2);
+        }
+      }
+  
+      .header-btn-lg,
+      .header__pane {
+        .hamburger-inner,
+        .hamburger.is-active .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+          background-color: rgba(0, 0, 0, .8) !important;
+        }
+      }
+      .app-header__logo {
+        .logo-src {
+        //   background: url('utils/images/logo.png');
+        color: #000
+        }
+      }
+    }
+  
+  }

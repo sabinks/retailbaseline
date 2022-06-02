@@ -1,0 +1,456 @@
+// Sidebar Base
+
+.app-sidebar {
+    width: $app-sidebar-width;
+    display: flex;
+    z-index: 11;
+    overflow: hidden;
+    min-width: $app-sidebar-width;
+    position: relative;
+    flex: 0 0 $app-sidebar-width;
+    margin-top: -$app-header-height;
+    padding-top: $app-header-height;
+    transition: all .2s;
+  
+    .app-sidebar__inner {
+      padding: 2px ($layout-spacer-x) $layout-spacer-x;
+    }
+  
+    .scrollbar-sidebar {
+      z-index: 15;
+      width: 100%;
+    }
+  
+    .app-sidebar-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0.05;
+      background-size: cover;
+      z-index: 10;
+    }
+  
+    .app-header__logo {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: none;
+      z-index: 11;
+    }
+  
+    &.sidebar-shadow {
+      box-shadow: 7px 0 60px rgba(0, 0, 0, 0.05);
+    }
+  }
+  
+  .app-sidebar__heading {
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    margin: ($layout-spacer-x / 2) 0;
+    font-weight: bold;
+    color: $primary;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .sidebar-mobile-overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: .6;
+    left: 0;
+    top: 0;
+    z-index: 12;
+  }
+  
+  // Sidebar Components
+  
+  // Sidebar Light
+
+.app-sidebar {
+    &.sidebar-text-light {
+      border-right: 0 !important;
+  
+      .app-sidebar__heading {
+        color: rgba(255, 255, 255, .6);
+  
+        &::before {
+          background: rgba(255, 255, 255, 0.5) !important;
+        }
+      }
+  
+      .vertical-nav-menu {
+        li {
+          a {
+            color: rgba(255, 255, 255, 0.7);
+            i.metismenu-icon {
+              opacity: .5;
+            }
+  
+            i.metismenu-state-icon {
+              opacity: .5;
+            }
+  
+            &:hover {
+              background: rgba(255, 255, 255, 0.15);
+              color: rgba(255, 255, 255, 1);
+  
+              i.metismenu-icon {
+                opacity: .8;
+              }
+  
+              i.metismenu-state-icon {
+                opacity: 1;
+              }
+            }
+          }
+  
+          a.mm-active {
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.15);
+          }
+        }
+  
+        ul {
+          &:before {
+            background: rgba(255, 255, 255, 0.1);
+          }
+  
+          & > li > a {
+            color: rgba(255, 255, 255, 0.6);
+  
+            &:hover {
+              color: rgba(255, 255, 255, 1);
+            }
+  
+            &.mm-active {
+              color: rgba(255, 255, 255, 1);
+              background: rgba(255, 255, 255, 0.15);
+            }
+          }
+        }
+      }
+  
+      .ps__thumb-y {
+        background: rgba(255, 255, 255, .3);
+      }
+  
+      .ps__rail-y:hover {
+        .ps__thumb-y {
+          background: rgba(255, 255, 255, .2);
+        }
+      }
+  
+      .app-header__logo {
+        .logo-src {
+          background: url('./images/logo.png');
+        }
+  
+        .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+          background-color: rgba(255, 255, 255, .8);
+        }
+      }
+    }
+  }
+
+//  Nav Bar
+@import "navmenu";
+
+  // Fixed Sidebar
+
+.fixed-sidebar {
+    .app-sidebar {
+      position: fixed;
+      height: 100vh;
+    }
+  
+    .app-main {
+  
+      .app-main__outer {
+        z-index: 9;
+        padding-left: $app-sidebar-width;
+      }
+  
+    }
+  
+    &.fixed-header {
+      .app-sidebar {
+        .app-header__logo {
+          display: none;
+        }
+      }
+    }
+  
+    &:not(.fixed-header) {
+      .app-sidebar {
+        .app-header__logo {
+          display: flex;
+        }
+      }
+  
+      .app-header {
+  
+        margin-left: $app-sidebar-width;
+  
+        .app-header__logo {
+          display: none;
+        }
+      }
+  
+      .app-main {
+        //z-index: 12;
+      }
+    }
+  
+    &.closed-sidebar {
+      &:not(.fixed-header) {
+  
+        .app-header {
+          margin-left: $app-sidebar-width-collapsed;
+        }
+  
+        .app-sidebar {
+  
+          .app-header__logo {
+            width: $app-sidebar-width-collapsed;
+            padding: 0;
+  
+            .logo-src {
+              display: none;
+            }
+  
+            .header__pane {
+              margin-right: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+// Closed Sidebar
+
+// Sidebar Menu Hover
+
+.closed-sidebar {
+    .app-sidebar {
+      transition: all .3s ease;
+      width: $app-sidebar-width-collapsed;
+      min-width: $app-sidebar-width-collapsed;
+      flex: 0 0 $app-sidebar-width-collapsed;
+      z-index: 13;
+  
+      .app-sidebar__inner {
+  
+        .app-sidebar__heading {
+          text-indent: -999em;
+  
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: $dropdown-link-hover-bg;
+            text-indent: 1px;
+          }
+        }
+  
+        ul li a {
+          text-indent: -99rem;
+          padding: 0;
+        }
+  
+        .metismenu-icon {
+          text-indent: 0;
+          left: 50%;
+          margin-left: -17px;
+        }
+  
+        .metismenu-state-icon {
+          visibility: hidden;
+        }
+  
+        ul {
+          &::before {
+            display: none;
+          }
+  
+          &.mm-show {
+            padding: 0;
+  
+            & > li > a {
+              height: 0;
+            }
+          }
+        }
+      }
+  
+      &:hover {
+        flex: 0 0 $app-sidebar-width !important;
+        width: $app-sidebar-width !important;
+  
+        .app-sidebar__inner {
+  
+          .app-sidebar__heading {
+            text-indent: initial;
+            &::before {
+              display: none;
+            }
+          }
+  
+          ul {
+            &::before {
+              display: block;
+            }
+  
+            li a {
+              text-indent: initial;
+              padding: 0 $layout-spacer-x 0 45px;
+            }
+          }
+  
+          .metismenu-icon {
+            text-indent: initial;
+            left: 5px;
+            margin-left: 0;
+          }
+  
+          .metismenu-state-icon {
+            visibility: visible;
+          }
+  
+          ul {
+            &.mm-show {
+              padding: .5em 0 0 2rem;
+  
+              & > li > a {
+                height: 2.3em;
+              }
+            }
+  
+            ul {
+              li a {
+                padding-left: 1em;
+              }
+            }
+  
+          }
+        }
+      }
+    }
+  
+    &:not(.sidebar-mobile-open) {
+  
+      .app-sidebar {
+        .scrollbar-sidebar {
+          position: static;
+          height: auto;
+          overflow: initial !important;
+        }
+  
+        &:hover {
+          .scrollbar-sidebar {
+            position: absolute;
+            height: 100%;
+            overflow: hidden !important;
+          }
+        }
+      }
+    }
+  
+    &:not(.closed-sidebar-mobile) {
+      .app-header {
+        .app-header__logo {
+          width: $app-sidebar-width-collapsed;
+  
+          .logo-src {
+            display: none;
+          }
+  
+          .header__pane {
+            margin-right: auto;
+          }
+        }
+      }
+  
+    }
+  
+    &.fixed-sidebar {
+      .app-main__outer {
+        padding-left: $app-sidebar-width-collapsed;
+      }
+    }
+  
+    &.fixed-header:not(.fixed-sidebar) {
+      .app-sidebar {
+        .app-header__logo {
+          visibility: hidden;
+        }
+      }
+    }
+  
+    &.closed-sidebar-mobile {
+      .app-sidebar,
+      .app-header {
+        .app-header__logo {
+          width: auto;
+          display: flex;
+  
+          .header__pane {
+            display: none;
+          }
+        }
+      }
+  
+      .app-sidebar {
+        .app-header__logo {
+          display: flex;
+          width: $app-sidebar-width-collapsed;
+          padding: 0 $layout-spacer-x !important;
+  
+          .logo-src {
+            display: block !important;
+            margin: 0 auto;
+            width: $logo-width - 76;
+          }
+  
+          .header__pane {
+            display: none;
+          }
+        }
+  
+        &:hover {
+          .app-header__logo {
+            width: $app-sidebar-width;
+  
+            .logo-src {
+              width: $logo-width;
+              margin: 0;
+  
+            }
+          }
+        }
+      }
+  
+      .app-header {
+        margin-left: 0 !important;
+      }
+    }
+  
+    &.fixed-footer {
+      .app-footer__inner {
+        margin-left: 0 !important;
+      }
+    }
+  }
+  @import "responsive";
+  
+  @import "theme/text-dark";
+  @import "theme/text-light";
