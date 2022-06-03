@@ -1,0 +1,31 @@
+/node_modules
+/public/hot
+/public/*.js
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+public/js/*.txt
+public/js/*.LICENSE
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.history
+# Created by https://www.gitignore.io/api/laravel,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=laravel,visualstudiocode
+
+
+# Laravel 5 & Lumen specific
+/.vagrant
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# End of https://www.gitignore.io/api/laravel,visualstudiocode

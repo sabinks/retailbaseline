@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { ReactFormBuilder } from 'react-form-builder2';
 import {formToolbar} from "../../utils/form";
 import {defaultEntityFormInputs} from "../../utils/default_entity_form_inputs";
